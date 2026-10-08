@@ -1,0 +1,73 @@
+{
+  "title": "Australian Chicken Slaughter and Chicken Meat Production, Quarterly",
+  "units": {
+    "chicken_meat_thousand_tonnes": "thousand tonnes",
+    "chickens_slaughtered_thousand": "thousand chickens",
+    "poultry_gross_value_million_aud": "AUD million"
+  },
+  "data": [
+    {
+      "quarter": "2024-06",
+      "label": "Jun-24",
+      "chicken_meat_thousand_tonnes": 371.6,
+      "chickens_slaughtered_thousand": 186411.5,
+      "poultry_gross_value_million_aud": 1042.8
+    },
+    {
+      "quarter": "2024-09",
+      "label": "Sep-24",
+      "chicken_meat_thousand_tonnes": 372.1,
+      "chickens_slaughtered_thousand": 185751.0,
+      "poultry_gross_value_million_aud": 1028.6
+    },
+    {
+      "quarter": "2024-12",
+      "label": "Dec-24",
+      "chicken_meat_thousand_tonnes": 378.3,
+      "chickens_slaughtered_thousand": 187058.8,
+      "poultry_gross_value_million_aud": 1032.3
+    },
+    {
+      "quarter": "2025-03",
+      "label": "Mar-25",
+      "chicken_meat_thousand_tonnes": 391.2,
+      "chickens_slaughtered_thousand": 189690.8,
+      "poultry_gross_value_million_aud": 1041.6
+    },
+    {
+      "quarter": "2025-06",
+      "label": "Jun-25",
+      "chicken_meat_thousand_tonnes": 393.2,
+      "chickens_slaughtered_thousand": 189819.0,
+      "poultry_gross_value_million_aud": 1047.8
+    },
+    {
+      "quarter": "2025-09",
+      "label": "Sep-25",
+      "chicken_meat_thousand_tonnes": 389.3,
+      "chickens_slaughtered_thousand": 191025.7,
+      "poultry_gross_value_million_aud": 1034.3
+    },
+    {
+      "quarter": "2025-12",
+      "label": "Dec-25",
+      "chicken_meat_thousand_tonnes": 391.6,
+      "chickens_slaughtered_thousand": 192914.0,
+      "poultry_gross_value_million_aud": 1039.4
+    },
+    {
+      "quarter": "2026-03",
+      "label": "Mar-26",
+      "chicken_meat_thousand_tonnes": 397.0,
+      "chickens_slaughtered_thousand": 198015.9,
+      "poultry_gross_value_million_aud": 1028.9
+    },
+    {
+      "quarter": "2026-06",
+      "label": "Jun-26",
+      "chicken_meat_thousand_tonnes": 409.1,
+      "chickens_slaughtered_thousand": 200279.2,
+      "poultry_gross_value_million_aud": 1076.7
+    }
+  ]
+}

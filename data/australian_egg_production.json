@@ -1,0 +1,28 @@
+{
+  "title": "Australia Egg Production by State, 2026",
+  "national_annual_egg_production_billion": 6.6,
+  "national_daily_egg_production_million": 18.1,
+  "state_data": [
+    {
+      "state": "New South Wales",
+      "state_code": "NSW",
+      "share_of_national_production_percent": 35
+    },
+    {
+      "state": "Victoria",
+      "state_code": "VIC",
+      "share_of_national_production_percent": 28
+    },
+    {
+      "state": "Queensland",
+      "state_code": "QLD",
+      "share_of_national_production_percent": 18
+    },
+    {
+      "state": "Other States",
+      "state_code": "OTHER",
+      "share_of_national_production_percent": 19,
+      "note": "South Australia, Western Australia and Tasmania combined"
+    }
+  ]
+}
