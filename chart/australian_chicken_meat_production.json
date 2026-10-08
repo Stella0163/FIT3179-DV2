@@ -1,0 +1,264 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Quarter-to-Quarter Change in Australian Chicken Meat Production",
+    "subtitle": "Changes in chicken meat production from Jun 2024 to Jun 2026",
+    "fontSize": 18,
+    "subtitleFontSize": 12
+  },
+
+  "data": {
+    "values": [
+      {
+        "quarter": "Jun-24",
+        "production": 371.6
+      },
+      {
+        "quarter": "Sep-24",
+        "production": 372.1
+      },
+      {
+        "quarter": "Dec-24",
+        "production": 378.3
+      },
+      {
+        "quarter": "Mar-25",
+        "production": 391.2
+      },
+      {
+        "quarter": "Jun-25",
+        "production": 393.2
+      },
+      {
+        "quarter": "Sep-25",
+        "production": 389.3
+      },
+      {
+        "quarter": "Dec-25",
+        "production": 391.6
+      },
+      {
+        "quarter": "Mar-26",
+        "production": 397.0
+      },
+      {
+        "quarter": "Jun-26",
+        "production": 409.1
+      }
+    ]
+  },
+
+  "width": 650,
+  "height": 350,
+
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "lag",
+          "field": "production",
+          "as": "previous_production"
+        }
+      ]
+    },
+    {
+      "calculate": "isValid(datum.previous_production) ? datum.production - datum.previous_production : 0",
+      "as": "change"
+    },
+    {
+      "calculate": "datum.change >= 0 ? 'Increase' : 'Decrease'",
+      "as": "change_type"
+    },
+    {
+      "calculate": "datum.change >= 0 ? datum.previous_production : datum.production",
+      "as": "y_start"
+    },
+    {
+      "calculate": "datum.change >= 0 ? datum.production : datum.previous_production",
+      "as": "y_end"
+    }
+  ],
+
+  "layer": [
+    {
+      "transform": [
+        {
+          "filter": "datum.quarter !== 'Jun-24'"
+        }
+      ],
+      "mark": {
+        "type": "bar",
+        "size": 38
+      },
+      "encoding": {
+        "x": {
+          "field": "quarter",
+          "type": "ordinal",
+          "title": "Quarter",
+          "sort": [
+            "Jun-24",
+            "Sep-24",
+            "Dec-24",
+            "Mar-25",
+            "Jun-25",
+            "Sep-25",
+            "Dec-25",
+            "Mar-26",
+            "Jun-26"
+          ],
+          "axis": {
+            "labelAngle": 0
+          }
+        },
+
+        "y": {
+          "field": "y_start",
+          "type": "quantitative",
+          "title": "Chicken Meat Production (Thousand Tonnes)",
+          "scale": {
+            "domain": [365, 415]
+          }
+        },
+
+        "y2": {
+          "field": "y_end"
+        },
+
+        "color": {
+          "field": "change_type",
+          "type": "nominal",
+          "title": "Quarterly Change"
+        },
+
+        "tooltip": [
+          {
+            "field": "quarter",
+            "type": "ordinal",
+            "title": "Quarter"
+          },
+          {
+            "field": "production",
+            "type": "quantitative",
+            "title": "Production",
+            "format": ".1f"
+          },
+          {
+            "field": "change",
+            "type": "quantitative",
+            "title": "Change",
+            "format": "+.1f"
+          }
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.quarter === 'Jun-24'"
+        }
+      ],
+      "mark": {
+        "type": "bar",
+        "size": 38
+      },
+      "encoding": {
+        "x": {
+          "field": "quarter",
+          "type": "ordinal",
+          "sort": [
+            "Jun-24",
+            "Sep-24",
+            "Dec-24",
+            "Mar-25",
+            "Jun-25",
+            "Sep-25",
+            "Dec-25",
+            "Mar-26",
+            "Jun-26"
+          ]
+        },
+
+        "y": {
+          "datum": 365
+        },
+
+        "y2": {
+          "field": "production"
+        },
+
+        "color": {
+          "value": "gray"
+        },
+
+        "tooltip": [
+          {
+            "field": "quarter",
+            "type": "ordinal",
+            "title": "Quarter"
+          },
+          {
+            "field": "production",
+            "type": "quantitative",
+            "title": "Production",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.quarter !== 'Jun-24'"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "dy": -8,
+        "fontSize": 11
+      },
+
+      "encoding": {
+        "x": {
+          "field": "quarter",
+          "type": "ordinal",
+          "sort": [
+            "Jun-24",
+            "Sep-24",
+            "Dec-24",
+            "Mar-25",
+            "Jun-25",
+            "Sep-25",
+            "Dec-25",
+            "Mar-26",
+            "Jun-26"
+          ]
+        },
+
+        "y": {
+          "field": "y_end",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "change",
+          "type": "quantitative",
+          "format": "+.1f"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "grid": true
+    }
+  }
+}
