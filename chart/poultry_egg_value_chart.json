@@ -1,0 +1,106 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Australian Poultry and Egg Production Value 2025 - 2026",
+    "fontSize": 18
+  },
+
+  "data": {
+    "url": "../data/abares_poultry_egg_value_2025-2026.json"
+  },
+
+  "width": 550,
+  "height": 180,
+
+  "encoding": {
+    "y": {
+      "field": "category",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null
+    },
+    "x": {
+      "field": "value_billion_aud",
+      "type": "quantitative",
+      "title": "Production Value (AUD Billion)",
+      "scale": {
+        "domain": [0, 4.8]
+      }
+    }
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#bdbdbd"
+      },
+      "encoding": {
+        "x2": {
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 220,
+        "color": "#4c78a8"
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "category",
+            "type": "nominal",
+            "title": "Industry"
+          },
+          {
+            "field": "financial_year",
+            "type": "nominal",
+            "title": "Financial Year"
+          },
+          {
+            "field": "value_billion_aud",
+            "type": "quantitative",
+            "title": "Value (AUD Billion)"
+          },
+          {
+            "field": "change_percent",
+            "type": "quantitative",
+            "title": "Change (%)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "black"
+      },
+      "encoding": {
+        "text": {
+          "field": "value_billion_aud",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "view": {
+      "stroke": null
+    }
+  }
+}
