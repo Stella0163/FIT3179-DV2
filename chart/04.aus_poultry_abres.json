@@ -1,0 +1,400 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Forecast Growth of Australia's Chicken Industry",
+    "fontSize": 19,
+    "subtitleFontSize": 12,
+    "anchor": "start"
+  },
+
+  "width": 520,
+  "height": 500,
+
+  "layer": [
+
+    {
+      "data": {
+        "values": [
+          {"ring": 100, "order": 1, "x": 0, "y": -10},
+          {"ring": 100, "order": 2, "x": 8.66, "y": 5},
+          {"ring": 100, "order": 3, "x": -8.66, "y": 5},
+          {"ring": 100, "order": 4, "x": 0, "y": -10},
+
+          {"ring": 120, "order": 1, "x": 0, "y": -30},
+          {"ring": 120, "order": 2, "x": 25.98, "y": 15},
+          {"ring": 120, "order": 3, "x": -25.98, "y": 15},
+          {"ring": 120, "order": 4, "x": 0, "y": -30},
+
+          {"ring": 140, "order": 1, "x": 0, "y": -50},
+          {"ring": 140, "order": 2, "x": 43.30, "y": 25},
+          {"ring": 140, "order": 3, "x": -43.30, "y": 25},
+          {"ring": 140, "order": 4, "x": 0, "y": -50}
+        ]
+      },
+
+      "mark": {
+        "type": "line",
+        "stroke": "#cccccc",
+        "strokeDash": [4, 4]
+      },
+
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [-65, 65]
+          }
+        },
+
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {
+            "domain": [-65, 50]
+          }
+        },
+
+        "detail": {
+          "field": "ring",
+          "type": "nominal"
+        },
+
+        "order": {
+          "field": "order",
+          "type": "ordinal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {"axis": "Slaughter", "order": 1, "x": 0, "y": 0},
+          {"axis": "Slaughter", "order": 2, "x": 0, "y": -55},
+
+          {"axis": "Production", "order": 1, "x": 0, "y": 0},
+          {"axis": "Production", "order": 2, "x": 47.63, "y": 27.5},
+
+          {"axis": "Exports", "order": 1, "x": 0, "y": 0},
+          {"axis": "Exports", "order": 2, "x": -47.63, "y": 27.5}
+        ]
+      },
+
+      "mark": {
+        "type": "line",
+        "stroke": "#dddddd",
+        "strokeWidth": 1
+      },
+
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+
+        "detail": {
+          "field": "axis",
+          "type": "nominal"
+        },
+
+        "order": {
+          "field": "order",
+          "type": "ordinal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "period": "2025-26 Forecast",
+            "measure": "Chickens Slaughtered",
+            "order": 1,
+            "index": 102.9,
+            "x": 0,
+            "y": -12.9
+          },
+          {
+            "period": "2025-26 Forecast",
+            "measure": "Chicken Meat Production",
+            "order": 2,
+            "index": 102.6,
+            "x": 10.91,
+            "y": 6.3
+          },
+          {
+            "period": "2025-26 Forecast",
+            "measure": "Chicken Meat Exports",
+            "order": 3,
+            "index": 134.8,
+            "x": -38.80,
+            "y": 22.4
+          },
+          {
+            "period": "2025-26 Forecast",
+            "measure": "Chickens Slaughtered",
+            "order": 4,
+            "index": 102.9,
+            "x": 0,
+            "y": -12.9
+          },
+
+          {
+            "period": "2030-31 Forecast",
+            "measure": "Chickens Slaughtered",
+            "order": 1,
+            "index": 110.1,
+            "x": 0,
+            "y": -20.1
+          },
+          {
+            "period": "2030-31 Forecast",
+            "measure": "Chicken Meat Production",
+            "order": 2,
+            "index": 113.0,
+            "x": 19.92,
+            "y": 11.5
+          },
+          {
+            "period": "2030-31 Forecast",
+            "measure": "Chicken Meat Exports",
+            "order": 3,
+            "index": 143.7,
+            "x": -46.51,
+            "y": 26.85
+          },
+          {
+            "period": "2030-31 Forecast",
+            "measure": "Chickens Slaughtered",
+            "order": 4,
+            "index": 110.1,
+            "x": 0,
+            "y": -20.1
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3
+      },
+
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+
+        "color": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Forecast Period"
+        },
+
+        "detail": {
+          "field": "period",
+          "type": "nominal"
+        },
+
+        "order": {
+          "field": "order",
+          "type": "ordinal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "period": "2025-26 Forecast",
+            "measure": "Chickens Slaughtered",
+            "index": 102.9,
+            "x": 0,
+            "y": -12.9
+          },
+          {
+            "period": "2025-26 Forecast",
+            "measure": "Chicken Meat Production",
+            "index": 102.6,
+            "x": 10.91,
+            "y": 6.3
+          },
+          {
+            "period": "2025-26 Forecast",
+            "measure": "Chicken Meat Exports",
+            "index": 134.8,
+            "x": -38.80,
+            "y": 22.4
+          },
+
+          {
+            "period": "2030-31 Forecast",
+            "measure": "Chickens Slaughtered",
+            "index": 110.1,
+            "x": 0,
+            "y": -20.1
+          },
+          {
+            "period": "2030-31 Forecast",
+            "measure": "Chicken Meat Production",
+            "index": 113.0,
+            "x": 19.92,
+            "y": 11.5
+          },
+          {
+            "period": "2030-31 Forecast",
+            "measure": "Chicken Meat Exports",
+            "index": 143.7,
+            "x": -46.51,
+            "y": 26.85
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 130
+      },
+
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+
+        "color": {
+          "field": "period",
+          "type": "nominal",
+          "legend": null
+        },
+
+        "tooltip": [
+          {
+            "field": "measure",
+            "type": "nominal",
+            "title": "Indicator"
+          },
+          {
+            "field": "period",
+            "type": "nominal",
+            "title": "Forecast"
+          },
+          {
+            "field": "index",
+            "type": "quantitative",
+            "title": "Growth Index",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "label": "Chickens Slaughtered",
+            "x": 0,
+            "y": -61
+          },
+          {
+            "label": "Chicken Meat Production",
+            "x": 58,
+            "y": 31
+          },
+          {
+            "label": "Chicken Meat Exports",
+            "x": -58,
+            "y": 31
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {"label": "100", "x": 3, "y": -10},
+          {"label": "120", "x": 3, "y": -30},
+          {"label": "140", "x": 3, "y": -50}
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fill": "#777777",
+        "align": "left",
+        "dx": 4
+      },
+
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

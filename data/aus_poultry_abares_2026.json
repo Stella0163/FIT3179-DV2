@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "country": "Australia",
+    "topic": "Australian chicken meat and egg production",
+    "data_source": "ABARES Agricultural Commodities Report, March 2026 (Australian Government, Department of Agriculture, Fisheries and Forestry)",
+    "website": "WATTPoultry.com",
+    "article_title": "Australian chicken, egg production forecast to rise",
+    "article_url": "https://www.wattagnet.com/broilers-turkeys/news/15820206/australian-chicken-egg-production-forecast-to-rise",
+    "website_published_date": "2026-03-20",
+    "geographic_level": "National (no state breakdown)",
+    "notes": [
+      "Figures are taken from a news summary of the ABARES report; cite ABARES as the primary source.",
+      "2024-25 chicken meat is stated as 'almost 1.54' million tonnes in the article, so 1.54 is rounded.",
+      "The article gives no egg production volumes, only egg sector value."
+    ]
+  },
+  "chicken_meat": [
+    {
+      "financial_year": "2024-25",
+      "status": "Actual",
+      "chickens_slaughtered_million": 752,
+      "chicken_meat_million_tonnes": 1.54,
+      "chicken_meat_exports_tonnes": 46500
+    },
+    {
+      "financial_year": "2025-26",
+      "status": "Forecast",
+      "chickens_slaughtered_million": 774,
+      "chicken_meat_million_tonnes": 1.58,
+      "chicken_meat_exports_tonnes": 62700
+    },
+    {
+      "financial_year": "2030-31",
+      "status": "Forecast",
+      "chickens_slaughtered_million": 828,
+      "chicken_meat_million_tonnes": 1.74,
+      "chicken_meat_exports_tonnes": 66800
+    }
+  ],
+  "sector_value": [
+    {
+      "item": "Egg sector value",
+      "period": "2025-26",
+      "value": 1.4,
+      "unit": "AUD billion",
+      "status": "Forecast"
+    },
+    {
+      "item": "Poultry meat sector value",
+      "period": "2026-27",
+      "value": 4.3,
+      "unit": "AUD billion",
+      "status": "Forecast"
+    }
+  ]
+}
