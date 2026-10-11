@@ -2,95 +2,124 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
   "title": {
-    "text": "Quarter-to-Quarter Change in Australian Chicken Meat Production",
-    "subtitle": "Changes in chicken meat production from Jun 2024 to Jun 2026",
+    "text": "Quarterly Performance of Australia's Chicken Industry",
+    "subtitle": "Relative performance of production, slaughter and poultry value, Jun 2024–Jun 2026",
     "fontSize": 18,
     "subtitleFontSize": 12
   },
+
+  "width": 650,
+  "height": 200,
 
   "data": {
     "values": [
       {
         "quarter": "Jun-24",
-        "production": 371.6
+        "chicken_meat": 371.6,
+        "slaughtered": 186411.5,
+        "gross_value": 1042.8
       },
       {
         "quarter": "Sep-24",
-        "production": 372.1
+        "chicken_meat": 372.1,
+        "slaughtered": 185751.0,
+        "gross_value": 1028.6
       },
       {
         "quarter": "Dec-24",
-        "production": 378.3
+        "chicken_meat": 378.3,
+        "slaughtered": 187058.8,
+        "gross_value": 1032.3
       },
       {
         "quarter": "Mar-25",
-        "production": 391.2
+        "chicken_meat": 391.2,
+        "slaughtered": 189690.8,
+        "gross_value": 1041.6
       },
       {
         "quarter": "Jun-25",
-        "production": 393.2
+        "chicken_meat": 393.2,
+        "slaughtered": 189819.0,
+        "gross_value": 1047.8
       },
       {
         "quarter": "Sep-25",
-        "production": 389.3
+        "chicken_meat": 389.3,
+        "slaughtered": 191025.7,
+        "gross_value": 1034.3
       },
       {
         "quarter": "Dec-25",
-        "production": 391.6
+        "chicken_meat": 391.6,
+        "slaughtered": 192914.0,
+        "gross_value": 1039.4
       },
       {
         "quarter": "Mar-26",
-        "production": 397.0
+        "chicken_meat": 397.0,
+        "slaughtered": 198015.9,
+        "gross_value": 1028.9
       },
       {
         "quarter": "Jun-26",
-        "production": 409.1
+        "chicken_meat": 409.1,
+        "slaughtered": 200279.2,
+        "gross_value": 1076.7
       }
     ]
   },
 
-  "width": 650,
-  "height": 350,
-
   "transform": [
     {
-      "window": [
-        {
-          "op": "lag",
-          "field": "production",
-          "as": "previous_production"
-        }
+      "fold": [
+        "chicken_meat",
+        "slaughtered",
+        "gross_value"
+      ],
+      "as": [
+        "measure",
+        "value"
       ]
     },
+
     {
-      "calculate": "isValid(datum.previous_production) ? datum.production - datum.previous_production : 0",
-      "as": "change"
+      "joinaggregate": [
+        {
+          "op": "min",
+          "field": "value",
+          "as": "min_value"
+        },
+        {
+          "op": "max",
+          "field": "value",
+          "as": "max_value"
+        }
+      ],
+      "groupby": [
+        "measure"
+      ]
     },
+
     {
-      "calculate": "datum.change >= 0 ? 'Increase' : 'Decrease'",
-      "as": "change_type"
+      "calculate": "((datum.value - datum.min_value) / (datum.max_value - datum.min_value)) * 100",
+      "as": "index"
     },
+
     {
-      "calculate": "datum.change >= 0 ? datum.previous_production : datum.production",
-      "as": "y_start"
-    },
-    {
-      "calculate": "datum.change >= 0 ? datum.production : datum.previous_production",
-      "as": "y_end"
+      "calculate": "datum.measure === 'chicken_meat' ? 'Chicken Meat Production' : datum.measure === 'slaughtered' ? 'Chickens Slaughtered' : 'Poultry Gross Value'",
+      "as": "measure_label"
     }
   ],
 
   "layer": [
     {
-      "transform": [
-        {
-          "filter": "datum.quarter !== 'Jun-24'"
-        }
-      ],
       "mark": {
-        "type": "bar",
-        "size": 38
+        "type": "rect",
+        "stroke": "white",
+        "strokeWidth": 2
       },
+
       "encoding": {
         "x": {
           "field": "quarter",
@@ -113,83 +142,27 @@
         },
 
         "y": {
-          "field": "y_start",
-          "type": "quantitative",
-          "title": "Chicken Meat Production (Thousand Tonnes)",
-          "scale": {
-            "domain": [365, 415]
-          }
-        },
-
-        "y2": {
-          "field": "y_end"
-        },
-
-        "color": {
-          "field": "change_type",
+          "field": "measure_label",
           "type": "nominal",
-          "title": "Quarterly Change"
-        },
-
-        "tooltip": [
-          {
-            "field": "quarter",
-            "type": "ordinal",
-            "title": "Quarter"
-          },
-          {
-            "field": "production",
-            "type": "quantitative",
-            "title": "Production",
-            "format": ".1f"
-          },
-          {
-            "field": "change",
-            "type": "quantitative",
-            "title": "Change",
-            "format": "+.1f"
-          }
-        ]
-      }
-    },
-
-    {
-      "transform": [
-        {
-          "filter": "datum.quarter === 'Jun-24'"
-        }
-      ],
-      "mark": {
-        "type": "bar",
-        "size": 38
-      },
-      "encoding": {
-        "x": {
-          "field": "quarter",
-          "type": "ordinal",
+          "title": null,
           "sort": [
-            "Jun-24",
-            "Sep-24",
-            "Dec-24",
-            "Mar-25",
-            "Jun-25",
-            "Sep-25",
-            "Dec-25",
-            "Mar-26",
-            "Jun-26"
+            "Chicken Meat Production",
+            "Chickens Slaughtered",
+            "Poultry Gross Value"
           ]
         },
 
-        "y": {
-          "datum": 365
-        },
-
-        "y2": {
-          "field": "production"
-        },
-
         "color": {
-          "value": "gray"
+          "field": "index",
+          "type": "quantitative",
+          "title": "Relative Level",
+          "scale": {
+            "scheme": "blues",
+            "domain": [
+              0,
+              100
+            ]
+          }
         },
 
         "tooltip": [
@@ -199,9 +172,20 @@
             "title": "Quarter"
           },
           {
-            "field": "production",
+            "field": "measure_label",
+            "type": "nominal",
+            "title": "Indicator"
+          },
+          {
+            "field": "value",
             "type": "quantitative",
-            "title": "Production",
+            "title": "Actual Value",
+            "format": ",.1f"
+          },
+          {
+            "field": "index",
+            "type": "quantitative",
+            "title": "Relative Level",
             "format": ".1f"
           }
         ]
@@ -209,15 +193,8 @@
     },
 
     {
-      "transform": [
-        {
-          "filter": "datum.quarter !== 'Jun-24'"
-        }
-      ],
-
       "mark": {
         "type": "text",
-        "dy": -8,
         "fontSize": 11
       },
 
@@ -239,14 +216,27 @@
         },
 
         "y": {
-          "field": "y_end",
-          "type": "quantitative"
+          "field": "measure_label",
+          "type": "nominal",
+          "sort": [
+            "Chicken Meat Production",
+            "Chickens Slaughtered",
+            "Poultry Gross Value"
+          ]
         },
 
         "text": {
-          "field": "change",
+          "field": "index",
           "type": "quantitative",
-          "format": "+.1f"
+          "format": ".0f"
+        },
+
+        "color": {
+          "condition": {
+            "test": "datum.index > 55",
+            "value": "white"
+          },
+          "value": "black"
         }
       }
     }
@@ -255,10 +245,6 @@
   "config": {
     "view": {
       "stroke": null
-    },
-
-    "axis": {
-      "grid": true
     }
   }
 }

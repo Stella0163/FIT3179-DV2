@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "country": "Australia",
+    "topic": "Australian egg industry",
+    "source_organisation": "Food Standards Australia New Zealand (FSANZ)",
+    "source_document": "P1060 Supporting Document 5 - Overview of egg industry in Australia",
+    "published_date": "2025-09-25",
+    "source_page": "https://www.foodstandards.gov.au/food-standards-code/proposals/Proposal-P1060-20-20Egg-Food-Safety-26-Primary-Production-Requirements",
+    "source_pdf": "https://www.foodstandards.gov.au/sites/default/files/2025-09/P1060%20SD5%20-%20Overview%20of%20egg%20industry%20in%20Australia.pdf",
+    "national_egg_production_billion": 6.98,
+    "national_laying_flock_million_hens": 21.25,
+    "note": "State percentages represent share of the national laying flock, not direct egg output volume."
+  },
+  "state_flock_share": [
+    {
+      "state_region": "New South Wales / ACT",
+      "state_code": "NSW_ACT",
+      "share_percent": 36.0
+    },
+    {
+      "state_region": "Queensland",
+      "state_code": "QLD",
+      "share_percent": 28.6
+    },
+    {
+      "state_region": "Victoria",
+      "state_code": "VIC",
+      "share_percent": 22.3
+    },
+    {
+      "state_region": "Western Australia",
+      "state_code": "WA",
+      "share_percent": 6.3
+    },
+    {
+      "state_region": "South Australia",
+      "state_code": "SA",
+      "share_percent": 5.5
+    },
+    {
+      "state_region": "Tasmania",
+      "state_code": "TAS",
+      "share_percent": 1.3
+    }
+  ]
+}
