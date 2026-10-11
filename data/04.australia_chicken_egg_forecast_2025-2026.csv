@@ -1,0 +1,6 @@
+﻿record_type,period,status,chickens_slaughtered_million,chicken_meat_million_tonnes,chicken_meat_exports_tonnes,item,value,unit
+chicken_meat,2024-25,Actual,752,1.54,46500,,,
+chicken_meat,2025-26,Forecast,774,1.58,62700,,,
+chicken_meat,2030-31,Forecast,828,1.74,66800,,,
+sector_value,2025-26,Forecast,,,,Egg sector value,1.4,AUD billion
+sector_value,2026-27,Forecast,,,,Poultry meat sector value,4.3,AUD billion
