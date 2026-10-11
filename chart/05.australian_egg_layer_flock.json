@@ -1,0 +1,136 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Share of Australia's National Laying Flock by State, 2025",
+    "subtitle": "NSW includes ACT; state percentages represent share of the national laying flock",
+    "fontSize": 18,
+    "subtitleFontSize": 11,
+    "anchor": "start"
+  },
+
+  "width": 700,
+  "height": 450,
+
+  "projection": {
+    "type": "mercator",
+    "center": [134, -28],
+    "scale": 620
+  },
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.geojson",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+
+  "transform": [
+    {
+      "calculate": "datum.properties.STATE_NAME",
+      "as": "state"
+    },
+
+    {
+      "lookup": "state",
+      "from": {
+        "data": {
+          "values": [
+            {
+              "state": "New South Wales",
+              "state_code": "NSW/ACT",
+              "share_percent": 36.0
+            },
+            {
+              "state": "Queensland",
+              "state_code": "QLD",
+              "share_percent": 28.6
+            },
+            {
+              "state": "Victoria",
+              "state_code": "VIC",
+              "share_percent": 22.3
+            },
+            {
+              "state": "Western Australia",
+              "state_code": "WA",
+              "share_percent": 6.3
+            },
+            {
+              "state": "South Australia",
+              "state_code": "SA",
+              "share_percent": 5.5
+            },
+            {
+              "state": "Tasmania",
+              "state_code": "TAS",
+              "share_percent": 1.3
+            }
+          ]
+        },
+
+        "key": "state",
+
+        "fields": [
+          "state_code",
+          "share_percent"
+        ]
+      }
+    }
+  ],
+
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 1.5
+  },
+
+  "encoding": {
+    "color": {
+      "condition": {
+        "test": "datum.share_percent != null",
+        "field": "share_percent",
+        "type": "quantitative",
+        "title": "National Laying Flock Share (%)",
+        "scale": {
+          "scheme": "blues",
+          "domain": [0, 36]
+        }
+      },
+      "value": "#e5e5e5"
+    },
+
+    "tooltip": [
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+
+      {
+        "field": "state_code",
+        "type": "nominal",
+        "title": "Region"
+      },
+
+      {
+        "field": "share_percent",
+        "type": "quantitative",
+        "title": "National Flock Share",
+        "format": ".1f"
+      }
+    ]
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+
+    "legend": {
+      "titleFontSize": 11,
+      "labelFontSize": 10
+    }
+  }
+}
