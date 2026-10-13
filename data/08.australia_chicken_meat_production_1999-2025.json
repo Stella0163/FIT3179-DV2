@@ -1,0 +1,107 @@
+[
+    {
+    "year": 2005,
+    "production_thousand_mt": 755,
+    "growth_percent": 4.57
+  },
+  {
+    "year": 2006,
+    "production_thousand_mt": 797,
+    "growth_percent": 5.56
+  },
+  {
+    "year": 2007,
+    "production_thousand_mt": 813,
+    "growth_percent": 2.01
+  },
+  {
+    "year": 2008,
+    "production_thousand_mt": 805,
+    "growth_percent": -0.98
+  },
+  {
+    "year": 2009,
+    "production_thousand_mt": 829,
+    "growth_percent": 2.98
+  },
+  {
+    "year": 2010,
+    "production_thousand_mt": 934,
+    "growth_percent": 12.67
+  },
+  {
+    "year": 2011,
+    "production_thousand_mt": 1013,
+    "growth_percent": 8.46
+  },
+  {
+    "year": 2012,
+    "production_thousand_mt": 1047,
+    "growth_percent": 3.36
+  },
+  {
+    "year": 2013,
+    "production_thousand_mt": 1067,
+    "growth_percent": 1.91
+  },
+  {
+    "year": 2014,
+    "production_thousand_mt": 1103,
+    "growth_percent": 3.37
+  },
+  {
+    "year": 2015,
+    "production_thousand_mt": 1137,
+    "growth_percent": 3.08
+  },
+  {
+    "year": 2016,
+    "production_thousand_mt": 1225,
+    "growth_percent": 7.74
+  },
+  {
+    "year": 2017,
+    "production_thousand_mt": 1220,
+    "growth_percent": -0.41
+  },
+  {
+    "year": 2018,
+    "production_thousand_mt": 1213,
+    "growth_percent": -0.57
+  },
+  {
+    "year": 2019,
+    "production_thousand_mt": 1227,
+    "growth_percent": 1.15
+  },
+  {
+    "year": 2020,
+    "production_thousand_mt": 1271,
+    "growth_percent": 3.59
+  },
+  {
+    "year": 2021,
+    "production_thousand_mt": 1337,
+    "growth_percent": 5.19
+  },
+  {
+    "year": 2022,
+    "production_thousand_mt": 1364,
+    "growth_percent": 2.02
+  },
+  {
+    "year": 2023,
+    "production_thousand_mt": 1413,
+    "growth_percent": 3.59
+  },
+  {
+    "year": 2024,
+    "production_thousand_mt": 1460,
+    "growth_percent": 3.33
+  },
+  {
+    "year": 2025,
+    "production_thousand_mt": 1485,
+    "growth_percent": 1.71
+  }
+]

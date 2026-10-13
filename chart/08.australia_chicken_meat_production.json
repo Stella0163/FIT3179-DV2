@@ -1,0 +1,206 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Australian Chicken Meat Production, 1999–2025",
+    "subtitle": "Production volume and annual growth rate",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "anchor": "start"
+  },
+
+  "data": {
+    "url": "../data/08.australia_chicken_meat_production_1999-2025.json"
+  },
+
+  "vconcat": [
+    {
+      "width": 750,
+      "height": 300,
+
+      "layer": [
+        {
+          "mark": {
+            "type": "area",
+            "opacity": 0.18
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal",
+              "title": null,
+              "axis": {
+                "labels": false,
+                "ticks": false
+              }
+            },
+            "y": {
+              "field": "production_thousand_mt",
+              "type": "quantitative",
+              "title": "Production (thousand MT)",
+              "scale": {
+                "zero": false
+              }
+            }
+          }
+        },
+
+        {
+          "mark": {
+            "type": "line",
+            "strokeWidth": 3,
+            "point": {
+              "filled": true,
+              "size": 45
+            }
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal"
+            },
+            "y": {
+              "field": "production_thousand_mt",
+              "type": "quantitative",
+              "scale": {
+                "zero": false
+              }
+            },
+            "tooltip": [
+              {
+                "field": "year",
+                "type": "ordinal",
+                "title": "Year"
+              },
+              {
+                "field": "production_thousand_mt",
+                "type": "quantitative",
+                "title": "Production",
+                "format": ","
+              },
+              {
+                "field": "growth_percent",
+                "type": "quantitative",
+                "title": "Growth (%)",
+                "format": ".2f"
+              }
+            ]
+          }
+        },
+
+        {
+          "transform": [
+            {
+              "filter": "datum.year == 1999 || datum.year == 2025"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "dy": -12,
+            "fontWeight": "bold",
+            "fontSize": 12
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal"
+            },
+            "y": {
+              "field": "production_thousand_mt",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "production_thousand_mt",
+              "type": "quantitative",
+              "format": ","
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "width": 750,
+      "height": 160,
+
+      "transform": [
+        {
+          "filter": "datum.growth_percent != null"
+        }
+      ],
+
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "strokeDash": [4, 4]
+          },
+          "encoding": {
+            "y": {
+              "datum": 0
+            }
+          }
+        },
+
+        {
+          "mark": {
+            "type": "bar"
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal",
+              "title": "Year",
+              "axis": {
+                "labelAngle": -45
+              }
+            },
+            "y": {
+              "field": "growth_percent",
+              "type": "quantitative",
+              "title": "Annual growth (%)"
+            },
+
+            "color": {
+              "condition": {
+                "test": "datum.growth_percent < 0",
+                "value": "#b2182b"
+              },
+              "value": "#4c78a8"
+            },
+
+            "tooltip": [
+              {
+                "field": "year",
+                "type": "ordinal",
+                "title": "Year"
+              },
+              {
+                "field": "growth_percent",
+                "type": "quantitative",
+                "title": "Growth (%)",
+                "format": ".2f"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+
+  "resolve": {
+    "scale": {
+      "x": "shared"
+    }
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  }
+}
