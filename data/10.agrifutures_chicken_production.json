@@ -1,0 +1,26 @@
+[
+  {
+    "region": "New South Wales",
+    "production_tonnes": 537000,
+    "longitude": 147.0,
+    "latitude": -32.0
+  },
+  {
+    "region": "Victoria",
+    "production_tonnes": 276000,
+    "longitude": 144.5,
+    "latitude": -36.5
+  },
+  {
+    "region": "Queensland",
+    "production_tonnes": 260000,
+    "longitude": 145.5,
+    "latitude": -22.0
+  },
+  {
+    "region": "Tasmania + SA + WA",
+    "production_tonnes": 377000,
+    "longitude": 133.5,
+    "latitude": -32.5
+  }
+]
