@@ -1,0 +1,130 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Growth of Australia's Chicken Meat Industry",
+    "subtitle": "Change from 2017-18 to 2023-24",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "anchor": "start"
+  },
+
+  "width": 450,
+  "height": 450,
+
+  "data": {
+    "values": [
+      {
+        "measure": "Production Volume",
+        "growth_percent": 21.0,
+        "start_value": 1.19,
+        "end_value": 1.44,
+        "unit": "million tonnes"
+      },
+      {
+        "measure": "Gross Production Value",
+        "growth_percent": 23.4,
+        "start_value": 3.29,
+        "end_value": 4.06,
+        "unit": "AUD billion"
+      }
+    ]
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 80,
+        "outerRadius": 150,
+        "cornerRadius": 8
+      },
+
+      "encoding": {
+        "theta": {
+          "field": "growth_percent",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 30],
+            "range": [0, 6.283185307]
+          }
+        },
+
+        "radius": {
+          "field": "measure",
+          "type": "nominal",
+          "sort": [
+            "Production Volume",
+            "Gross Production Value"
+          ]
+        },
+
+        "color": {
+          "field": "measure",
+          "type": "nominal",
+          "title": null
+        },
+
+        "tooltip": [
+          {
+            "field": "measure",
+            "type": "nominal",
+            "title": "Measure"
+          },
+          {
+            "field": "growth_percent",
+            "type": "quantitative",
+            "title": "Growth",
+            "format": ".1f"
+          },
+          {
+            "field": "start_value",
+            "type": "quantitative",
+            "title": "2017–18"
+          },
+          {
+            "field": "end_value",
+            "type": "quantitative",
+            "title": "2023–24"
+          },
+          {
+            "field": "unit",
+            "type": "nominal",
+            "title": "Unit"
+          }
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "label": "Industry Growth"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "fontSize": 17,
+        "fontWeight": "bold"
+      },
+
+      "encoding": {
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelFontSize": 12
+    }
+  }
+}
