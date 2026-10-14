@@ -3,13 +3,13 @@
 
   "title": {
     "text": "Forecast Growth of Australia's Chicken Industry",
-    "fontSize": 19,
-    "subtitleFontSize": 12,
-    "anchor": "start"
+    "fontSize": 22,
+    "anchor": "middle",
+    "offset": 18
   },
 
-  "width": 520,
-  "height": 500,
+  "width": 360,
+  "height": 370,
 
   "layer": [
 
@@ -45,7 +45,7 @@
           "type": "quantitative",
           "axis": null,
           "scale": {
-            "domain": [-65, 65]
+            "domain": [-70, 45]
           }
         },
 
@@ -54,7 +54,7 @@
           "type": "quantitative",
           "axis": null,
           "scale": {
-            "domain": [-65, 50]
+            "domain": [-65, 45]
           }
         },
 

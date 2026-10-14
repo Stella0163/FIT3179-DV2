@@ -3,12 +3,14 @@
 
   "title": {
     "text": "Quarterly Performance of Australia's Chicken Industry",
-    "subtitle": "Relative performance of production, slaughter and poultry value, Jun 2024–Jun 2026",
-    "fontSize": 18,
-    "subtitleFontSize": 12
+    "subtitle": "Relative performance of production, slaughter and poultry value from Jun 2024 to Jun 2026",
+    "fontSize": 24,
+    "subtitleFontSize": 15,
+    "anchor": "start",
+    "offset": 12
   },
 
-  "width": 650,
+  "width": 700,
   "height": 200,
 
   "data": {
@@ -82,7 +84,6 @@
         "value"
       ]
     },
-
     {
       "joinaggregate": [
         {
@@ -100,12 +101,10 @@
         "measure"
       ]
     },
-
     {
       "calculate": "((datum.value - datum.min_value) / (datum.max_value - datum.min_value)) * 100",
       "as": "index"
     },
-
     {
       "calculate": "datum.measure === 'chicken_meat' ? 'Chicken Meat Production' : datum.measure === 'slaughtered' ? 'Chickens Slaughtered' : 'Poultry Gross Value'",
       "as": "measure_label"
@@ -137,7 +136,9 @@
             "Jun-26"
           ],
           "axis": {
-            "labelAngle": 0
+            "labelAngle": 0,
+            "labelFontSize": 14,
+            "titleFontSize": 16
           }
         },
 
@@ -149,7 +150,11 @@
             "Chicken Meat Production",
             "Chickens Slaughtered",
             "Poultry Gross Value"
-          ]
+          ],
+          "axis": {
+            "labelFontSize": 14,
+            "labelPadding": 8
+          }
         },
 
         "color": {
@@ -162,6 +167,10 @@
               0,
               100
             ]
+          },
+          "legend": {
+            "titleFontSize": 15,
+            "labelFontSize": 13
           }
         },
 
@@ -195,7 +204,7 @@
     {
       "mark": {
         "type": "text",
-        "fontSize": 11
+        "fontSize": 13
       },
 
       "encoding": {

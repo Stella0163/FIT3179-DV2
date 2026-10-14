@@ -4,9 +4,10 @@
   "title": {
     "text": "Australia Egg Production by State, 2026",
     "subtitle": "Share of national egg production by major producing states",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
-    "anchor": "start"
+    "fontSize": 24,
+    "subtitleFontSize": 14,
+    "anchor": "start",
+    "offset": 16
   },
 
   "data": {
@@ -36,22 +37,37 @@
 
   "vconcat": [
     {
-      "width": 500,
-      "height": 420,
+      "width": 600,
+      "height": 430,
 
       "title": {
         "text": "Distribution of National Egg Production",
-        "fontSize": 15
+        "fontSize": 18,
+        "anchor": "middle"
       },
 
       "layer": [
         {
+          "params": [
+            {
+              "name": "stateSelect",
+              "select": {
+                "type": "point",
+                "fields": ["state_code"],
+                "on": "click",
+                "toggle": "true",
+                "clear": false
+              }
+            }
+          ],
+
           "mark": {
             "type": "arc",
             "innerRadius": 55,
             "stroke": "white",
             "strokeWidth": 2,
-            "cornerRadius": 5
+            "cornerRadius": 5,
+            "cursor": "pointer"
           },
 
           "encoding": {
@@ -81,9 +97,39 @@
               "field": "state",
               "type": "nominal",
               "title": "State / Group",
+
               "scale": {
-                "scheme": "blues"
+                "domain": [
+                  "New South Wales",
+                  "Victoria",
+                  "Queensland",
+                  "Other States"
+                ],
+
+                "range": [
+                  "#1f4e79",
+                  "#4f81bd",
+                  "#87b5dc",
+                  "#c9dced"
+                ]
+              },
+
+              "legend": {
+                "orient": "right",
+                "titleFontSize": 14,
+                "labelFontSize": 13,
+                "symbolSize": 180,
+                "offset": 18
               }
+            },
+
+            "opacity": {
+              "condition": {
+                "param": "stateSelect",
+                "value": 1,
+                "empty": true
+              },
+              "value": 0.2
             },
 
             "tooltip": [
@@ -105,8 +151,8 @@
         {
           "mark": {
             "type": "text",
-            "radiusOffset": 22,
-            "fontSize": 12,
+            "radiusOffset": 24,
+            "fontSize": 13,
             "fontWeight": "bold"
           },
 
@@ -136,6 +182,15 @@
             "text": {
               "field": "state_code",
               "type": "nominal"
+            },
+
+            "opacity": {
+              "condition": {
+                "param": "stateSelect",
+                "value": 1,
+                "empty": true
+              },
+              "value": 0.25
             }
           }
         }
@@ -144,11 +199,12 @@
 
     {
       "width": 700,
-      "height": 200,
+      "height": 240,
 
       "title": {
         "text": "State Comparison",
-        "fontSize": 15
+        "fontSize": 18,
+        "anchor": "middle"
       },
 
       "encoding": {
@@ -156,14 +212,19 @@
           "field": "state_code",
           "type": "nominal",
           "title": "State / Group",
+
           "sort": [
             "NSW",
             "VIC",
             "QLD",
             "OTHER"
           ],
+
           "axis": {
-            "labelAngle": 0
+            "labelAngle": 0,
+            "labelFontSize": 13,
+            "titleFontSize": 14,
+            "labelPadding": 8
           }
         },
 
@@ -171,21 +232,51 @@
           "field": "share",
           "type": "quantitative",
           "title": "Share of National Egg Production (%)",
+
           "scale": {
             "domain": [
               0,
               40
             ]
+          },
+
+          "axis": {
+            "labelFontSize": 13,
+            "titleFontSize": 14,
+            "gridColor": "#e5e7eb"
           }
         },
 
         "color": {
-          "field": "share",
-          "type": "quantitative",
-          "legend": null,
+          "field": "state",
+          "type": "nominal",
+
           "scale": {
-            "scheme": "blues"
-          }
+            "domain": [
+              "New South Wales",
+              "Victoria",
+              "Queensland",
+              "Other States"
+            ],
+
+            "range": [
+              "#1f4e79",
+              "#4f81bd",
+              "#87b5dc",
+              "#c9dced"
+            ]
+          },
+
+          "legend": null
+        },
+
+        "opacity": {
+          "condition": {
+            "param": "stateSelect",
+            "value": 1,
+            "empty": true
+          },
+          "value": 0.2
         },
 
         "tooltip": [
@@ -207,17 +298,18 @@
         {
           "mark": {
             "type": "bar",
-            "cornerRadiusTopLeft": 5,
-            "cornerRadiusTopRight": 5
+            "cornerRadiusTopLeft": 6,
+            "cornerRadiusTopRight": 6
           }
         },
 
         {
           "mark": {
             "type": "text",
-            "dy": -9,
-            "fontSize": 13,
-            "fontWeight": "bold"
+            "dy": -10,
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "color": "#1f2a2e"
           },
 
           "encoding": {
@@ -227,12 +319,27 @@
               "format": ".0f"
             }
           }
+        },
+
+        {
+          "mark": {
+            "type": "text",
+            "dy": -28,
+            "fontSize": 12,
+            "color": "#4b5563"
+          },
+
+          "encoding": {
+            "text": {
+              "value": "%"
+            }
+          }
         }
       ]
     }
   ],
 
-  "spacing": 30,
+  "spacing": 36,
 
   "config": {
     "view": {
@@ -240,13 +347,13 @@
     },
 
     "axis": {
-      "labelFontSize": 11,
-      "titleFontSize": 12
+      "labelFontSize": 13,
+      "titleFontSize": 14
     },
 
     "legend": {
-      "labelFontSize": 11,
-      "titleFontSize": 12
+      "labelFontSize": 13,
+      "titleFontSize": 14
     }
   }
 }

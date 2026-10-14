@@ -9,11 +9,13 @@
     "anchor": "start"
   },
 
-  "width": 700,
+  "width": 800,
   "height": 500,
 
   "projection": {
-    "type": "mercator"
+    "type": "mercator",
+    "center": [125, -28],
+    "scale": 720
   },
 
   "layer": [
@@ -28,7 +30,7 @@
 
       "mark": {
         "type": "geoshape",
-        "fill": "#e6e6e6",
+        "fill": "#F6E1D3",
         "stroke": "white",
         "strokeWidth": 1.2
       },

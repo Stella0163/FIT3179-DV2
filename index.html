@@ -13,7 +13,6 @@
     :root {
       --ink: #1f2a2e;
       --ink-soft: #4a575c;
-      --yolk: #f2b431;
       --page: #f4f6f3;
       --card: #ffffff;
       --line: #d9dfdb;
@@ -23,7 +22,7 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 18px;
       line-height: 1.7;
       background: var(--page);
@@ -45,7 +44,7 @@
     .hero p { margin: 0; max-width: var(--measure); font-size: 1.15rem; color: #d5dcd8; }
     .hero-rule { width: 72px; height: 6px; background: var(--yolk); border-radius: 3px; margin-bottom: 28px; }
 
-    main { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    main { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
     .story-section { padding: 64px 0 24px; }
     .story-section + .story-section { border-top: 1px solid var(--line); }
     .story-label { font-size: 1rem; font-weight: 600; color: var(--ink-soft); margin: 0 0 6px; }
@@ -53,7 +52,8 @@
       margin: 0 0 14px;
       font-size: clamp(1.7rem, 3.6vw, 2.3rem);
       line-height: 1.2;
-      max-width: 24ch;
+      max-width: 100%;
+      text-wrap: balance;
     }
     .story-intro { max-width: var(--measure); color: var(--ink-soft); margin: 0 0 28px; }
 
@@ -100,8 +100,8 @@
     }
 
     .conclusion {
-      margin-top: 72px;
-      padding: 56px 24px 64px;
+      margin-top: 50px;
+      padding: 30px 24px 64px;
       background: var(--ink);
       color: #fff;
     }
@@ -117,13 +117,13 @@
     }
     footer { text-align: center; padding: 24px; color: var(--ink-soft); font-size: 1rem; }
 
-    @media (max-width: 760px) {
+    @media (max-width: 700px) {
       body { font-size: 17px; }
-      .hero { padding: 64px 20px 52px; }
+      .hero { padding: 60px 20px 52px; }
       main { padding: 0 16px; }
-      .story-section { padding: 48px 0 16px; }
+      .story-section { padding: 60px 0 16px; }
       .chart-card { padding: 12px; }
-      .multi-explanation { grid-template-columns: 1fr; gap: 20px; }
+      .multi-explanation { grid-template-columns: 1fr; gap: 10px; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
@@ -135,8 +135,9 @@
       <div class="hero-rule" aria-hidden="true"></div>
       <h1>Australia's poultry industry: from growth to geography</h1>
       <p>
-        This visual story explores how Australia's chicken meat and egg industries have changed over time,
-        where production is concentrated, and how the industry's economic significance is developing.
+        This visual story explores how Australia's chicken meat and egg</p> 
+        <p>industries have changed over time, where production is concentrated,</p>
+        <p>and how the industry's economic significance is developing.</p> 
       </p>
     </div>
   </header>
@@ -150,7 +151,8 @@
         Production has generally increased over the decades, although some years show temporary slowdowns or declines.
       </p>
       <div class="chart-card"><div class="chart" id="chart08" role="img" aria-label="Chart of long-term chicken meat production in Australia"></div></div>
-      <p class="how-to-read"><strong>How to use this chart:</strong> hover over the chart to read exact values for each year.</p>
+      <p class="how-to-read"><strong>How to use this chart:
+      </strong> hover over the chart to read exact values for each year.</p>
       <div class="explanation">
         <h3>What this shows</h3>
         <p>
@@ -160,13 +162,12 @@
       </div>
     </section>
 
-    <p class="transition">The long-term trend is clear, but what has happened more recently?</p>
-
     <section class="story-section" aria-labelledby="h-recent">
       <p class="story-label">Part 2: Recent production</p>
       <h2 id="h-recent">Recent production remains high</h2>
       <p class="story-intro">
-        Recent quarterly data give a closer look at chicken meat output, slaughter numbers and industry value.
+        Recent quarterly data give a closer look at chicken meat 
+        output, slaughter numbers and industry value.
       </p>
       <div class="chart-card"><div class="chart" id="chart01" role="img" aria-label="Chart of recent quarterly chicken meat production in Australia"></div></div>
       <p class="how-to-read"><strong>How to use this chart:</strong> hover over a point or bar to see the exact quarterly value.</p>
@@ -215,9 +216,7 @@
         </p>
       </div>
     </section>
-
-    <p class="transition">Chicken meat is only one part of the poultry story. The next parts turn to eggs.</p>
-
+    
     <section class="story-section" aria-labelledby="h-eggs">
       <p class="story-label">Part 5: Egg production</p>
       <h2 id="h-eggs">Egg production is concentrated across several major states</h2>
@@ -257,26 +256,43 @@
       </div>
     </section>
 
-    <section class="story-section" aria-labelledby="h-value">
-      <p class="story-label">Part 3: Growth in volume and value</p>
-      <h2 id="h-value">Industry growth is visible in both production and economic value</h2>
-      <p class="story-intro">
-        Physical output and monetary value capture two different dimensions of industry growth. Each chart below
-        builds from the 2017–18 level to the 2023-24 level.
-      </p>
-      <div class="chart-card"><div class="chart" id="chart09" role="img" aria-label="Waterfall charts showing growth in chicken meat production volume and gross production value from 2017–18 to 2023–24"></div></div>
-      <p class="how-to-read"><strong>How to use these charts:</strong> grey bars are the 2017–18 starting level, yellow bars are the increase, and dark bars are the 2023–24 ending level. Hover over any bar to see its full value and unit.</p>
-      <div class="multi-explanation">
-        <div class="explanation">
-          <h3>Production volume (left chart)</h3>
-          <p>Chicken meat production rose by 21.0%, from 1.19 to 1.44 million tonnes.</p>
-        </div>
-        <div class="explanation">
-          <h3>Gross production value (right chart)</h3>
-          <p>The dollar value of production rose by 23.4%, from 3.29 to 4.06 billion dollars.</p>
-        </div>
+    <section class="story-section" aria-labelledby="h-economic-value">
+
+    <p class="story-label">Part 7: Industry value</p>
+
+    <h2 id="h-economic-value">
+      Poultry and egg production make a substantial economic contribution
+    </h2>
+
+    <p class="story-intro">
+      Production value provides another perspective on the scale of Australia's poultry industry,
+      comparing the economic value generated by poultry slaughtering and egg production.
+    </p>
+
+    <div class="chart-card">
+      <div
+        class="chart"
+        id="chart03"
+        role="img"
+        aria-label="Chart comparing the production value of poultry slaughtering and egg production in Australia">
       </div>
-    </section>
+    </div>
+
+    <p class="how-to-read">
+      <strong>How to use this chart:</strong>
+      hover over each point to see the production value and financial year.
+    </p>
+
+    <div class="explanation">
+      <h3>Economic scale</h3>
+
+      <p>
+        Poultry slaughtering has a higher production value than egg production,
+        showing the relative economic scale of the two parts of Australia's poultry industry.
+      </p>
+    </div>
+
+  </section>
 
     <section class="story-section" aria-labelledby="h-outlook">
       <p class="story-label">Part 8: Future outlook</p>
