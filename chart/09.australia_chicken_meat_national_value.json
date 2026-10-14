@@ -3,128 +3,146 @@
 
   "title": {
     "text": "Growth of Australia's Chicken Meat Industry",
-    "subtitle": "Change from 2017-18 to 2023-24",
+    "subtitle": "How the 2017–18 level built up to the 2023–24 level",
     "fontSize": 20,
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "anchor": "start"
   },
 
-  "width": 450,
-  "height": 450,
-
   "data": {
     "values": [
-      {
-        "measure": "Production Volume",
-        "growth_percent": 21.0,
-        "start_value": 1.19,
-        "end_value": 1.44,
-        "unit": "million tonnes"
-      },
-      {
-        "measure": "Gross Production Value",
-        "growth_percent": 23.4,
-        "start_value": 3.29,
-        "end_value": 4.06,
-        "unit": "AUD billion"
-      }
+      { "measure": "Production Volume", "step": "2017–18", "bottom": 0,    "top": 1.19, "kind": "Starting level", "label": "1.19 million tonnes", "short_label": "1.19",  "percent_label": "" },
+      { "measure": "Production Volume", "step": "Increase", "bottom": 1.19, "top": 1.44, "kind": "Increase",       "label": "+0.25 million tonnes (+21.0%)", "short_label": "+0.25" },
+      { "measure": "Production Volume", "step": "2023–24", "bottom": 0,    "top": 1.44, "kind": "Ending level",   "label": "1.44 million tonnes", "short_label": "1.44",  "percent_label": "" },
+
+      { "measure": "Gross Production Value", "step": "2017–18", "bottom": 0,    "top": 3.29, "kind": "Starting level", "label": "3.29 billion dollars", "short_label": "3.29",  "percent_label": "" },
+      { "measure": "Gross Production Value", "step": "Increase", "bottom": 3.29, "top": 4.06, "kind": "Increase",       "label": "+0.77 billion dollars (+23.4%)", "short_label": "+0.77" },
+      { "measure": "Gross Production Value", "step": "2023–24", "bottom": 0,    "top": 4.06, "kind": "Ending level",   "label": "4.06 billion dollars", "short_label": "4.06",  "percent_label": "" }
     ]
   },
 
-  "layer": [
+  "hconcat": [
     {
-      "mark": {
-        "type": "arc",
-        "innerRadius": 80,
-        "outerRadius": 150,
-        "cornerRadius": 8
-      },
-
+      "title": { "text": "Production volume", "fontSize": 15, "anchor": "start" },
+      "width": 300,
+      "height": 380,
+      "transform": [{ "filter": "datum.measure === 'Production Volume'" }],
       "encoding": {
-        "theta": {
-          "field": "growth_percent",
-          "type": "quantitative",
-          "scale": {
-            "domain": [0, 30],
-            "range": [0, 6.283185307]
+        "x": {
+          "field": "step",
+          "type": "ordinal",
+          "sort": ["2017–18", "Increase", "2023–24"],
+          "title": null,
+          "axis": { "labelAngle": 0, "labelFontSize": 13 }
+        }
+      },
+      "layer": [
+        {
+          "mark": { "type": "bar", "size": 60, "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3 },
+          "encoding": {
+            "y": {
+              "field": "bottom",
+              "type": "quantitative",
+              "title": "Million tonnes of chicken meat",
+              "scale": { "domain": [0, 1.9] },
+              "axis": { "titleFontSize": 13, "labelFontSize": 12, "gridColor": "#e3e8e5" }
+            },
+            "y2": { "field": "top" },
+            "color": {
+              "field": "kind",
+              "type": "nominal",
+              "title": "Legend:",
+              "scale": {
+                "domain": ["Starting level", "Increase", "Ending level"],
+                "range": ["#9aa5a0", "#f2b431", "#1f2a2e"]
+              },
+              "legend": { "orient": "right", "direction": "vertical", "labelFontSize": 13, "titleFontSize": 13, "symbolSize": 200, "padding": 10 }
+            },
+            "tooltip": [
+              { "field": "step", "type": "nominal", "title": "Step" },
+              { "field": "label", "type": "nominal", "title": "Value" }
+            ]
           }
         },
-
-        "radius": {
-          "field": "measure",
-          "type": "nominal",
-          "sort": [
-            "Production Volume",
-            "Gross Production Value"
-          ]
-        },
-
-        "color": {
-          "field": "measure",
-          "type": "nominal",
-          "title": null
-        },
-
-        "tooltip": [
-          {
-            "field": "measure",
-            "type": "nominal",
-            "title": "Measure"
-          },
-          {
-            "field": "growth_percent",
-            "type": "quantitative",
-            "title": "Growth",
-            "format": ".1f"
-          },
-          {
-            "field": "start_value",
-            "type": "quantitative",
-            "title": "2017–18"
-          },
-          {
-            "field": "end_value",
-            "type": "quantitative",
-            "title": "2023–24"
-          },
-          {
-            "field": "unit",
-            "type": "nominal",
-            "title": "Unit"
+        {
+          "transform": [
+            {
+              "calculate": "datum.kind === 'Increase' ? [datum.short_label, datum.percent_label] : [datum.short_label]",
+              "as": "bar_label"
+            }
+          ],
+          "mark": { "type": "text", "baseline": "bottom", "dy": -6, "fontSize": 13, "fontWeight": "bold", "color": "#1f2a2e" },
+          "encoding": {
+            "y": { "field": "top", "type": "quantitative" },
+            "text": { "field": "bar_label", "type": "nominal" }
           }
-        ]
-      }
+        }
+      ]
     },
 
     {
-      "data": {
-        "values": [
-          {
-            "label": "Industry Growth"
-          }
-        ]
-      },
-
-      "mark": {
-        "type": "text",
-        "fontSize": 17,
-        "fontWeight": "bold"
-      },
-
+      "title": { "text": "Gross production value", "fontSize": 15, "anchor": "start" },
+      "width": 300,
+      "height": 380,
+      "transform": [{ "filter": "datum.measure === 'Gross Production Value'" }],
       "encoding": {
-        "text": {
-          "field": "label"
+        "x": {
+          "field": "step",
+          "type": "ordinal",
+          "sort": ["2017–18", "Increase", "2023–24"],
+          "title": null,
+          "axis": { "labelAngle": 0, "labelFontSize": 13 }
         }
-      }
+      },
+      "layer": [
+        {
+          "mark": { "type": "bar", "size": 60, "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3 },
+          "encoding": {
+            "y": {
+              "field": "bottom",
+              "type": "quantitative",
+              "title": "Billion dollars",
+              "scale": { "domain": [0, 5.2] },
+              "axis": { "titleFontSize": 13, "labelFontSize": 12, "gridColor": "#e3e8e5" }
+            },
+            "y2": { "field": "top" },
+            "color": {
+              "field": "kind",
+              "type": "nominal",
+              "scale": {
+                "domain": ["Starting level", "Increase", "Ending level"],
+                "range": ["#9aa5a0", "#f2b431", "#1f2a2e"]
+              }
+            },
+            "tooltip": [
+              { "field": "step", "type": "nominal", "title": "Step" },
+              { "field": "label", "type": "nominal", "title": "Value" }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "calculate": "datum.kind === 'Increase' ? [datum.short_label, datum.percent_label] : [datum.short_label]",
+              "as": "bar_label"
+            }
+          ],
+          "mark": { "type": "text", "baseline": "bottom", "dy": -6, "fontSize": 13, "fontWeight": "bold", "color": "#1f2a2e" },
+          "encoding": {
+            "y": { "field": "top", "type": "quantitative" },
+            "text": { "field": "bar_label", "type": "nominal" }
+          }
+        }
+      ]
     }
   ],
 
+  "resolve": {
+    "scale": { "y": "independent", "color": "shared" }
+  },
+
   "config": {
-    "view": {
-      "stroke": null
-    },
-    "legend": {
-      "labelFontSize": 12
-    }
+    "view": { "stroke": null },
+    "concat": { "spacing": 50 }
   }
 }
