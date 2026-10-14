@@ -1,0 +1,32 @@
+[
+  {
+    "financial_year": "2024-25",
+    "status": "Actual",
+    "chickens_slaughtered_million": 752,
+    "chicken_meat_million_tonnes": 1.54,
+    "chicken_meat_exports_tonnes": 46500,
+    "slaughter_index": 100.0,
+    "production_index": 100.0,
+    "exports_index": 100.0
+  },
+  {
+    "financial_year": "2025-26",
+    "status": "Forecast",
+    "chickens_slaughtered_million": 774,
+    "chicken_meat_million_tonnes": 1.58,
+    "chicken_meat_exports_tonnes": 62700,
+    "slaughter_index": 102.9,
+    "production_index": 102.6,
+    "exports_index": 134.8
+  },
+  {
+    "financial_year": "2030-31",
+    "status": "Forecast",
+    "chickens_slaughtered_million": 828,
+    "chicken_meat_million_tonnes": 1.74,
+    "chicken_meat_exports_tonnes": 66800,
+    "slaughter_index": 110.1,
+    "production_index": 113.0,
+    "exports_index": 143.7
+  }
+]
