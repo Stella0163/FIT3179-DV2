@@ -3,107 +3,89 @@
 
   "title": {
     "text": "Australia Egg Production by State, 2026",
-    "subtitle": "NSW, Victoria and Queensland are shown individually; remaining states are grouped as 'Other States'.",
+    "subtitle": "Share of national egg production by major producing states",
     "fontSize": 20,
     "subtitleFontSize": 12,
     "anchor": "start"
   },
 
+  "data": {
+    "values": [
+      {
+        "state": "New South Wales",
+        "state_code": "NSW",
+        "share": 35
+      },
+      {
+        "state": "Victoria",
+        "state_code": "VIC",
+        "share": 28
+      },
+      {
+        "state": "Queensland",
+        "state_code": "QLD",
+        "share": 18
+      },
+      {
+        "state": "Other States",
+        "state_code": "OTHER",
+        "share": 19
+      }
+    ]
+  },
+
   "vconcat": [
     {
-      "width": 700,
-      "height": 430,
-      "projection": {
-        "type": "mercator",
-        "center": [134, -28],
-        "scale": 430
+      "width": 500,
+      "height": 420,
+
+      "title": {
+        "text": "Distribution of National Egg Production",
+        "fontSize": 15
       },
+
       "layer": [
         {
-          "data": {
-            "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.geojson",
-            "format": {
-              "type": "json",
-              "property": "features"
-            }
-          },
           "mark": {
-            "type": "geoshape",
-            "fill": "#e6e6e6",
+            "type": "arc",
+            "innerRadius": 55,
             "stroke": "white",
-            "strokeWidth": 1.2
+            "strokeWidth": 2,
+            "cornerRadius": 5
           },
-          "encoding": {
-            "tooltip": [
-              {
-                "field": "properties.STATE_NAME",
-                "type": "nominal",
-                "title": "State/Territory"
-              }
-            ]
-          }
-        },
 
-        {
-          "data": {
-            "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.geojson",
-            "format": {
-              "type": "json",
-              "property": "features"
-            }
-          },
-          "transform": [
-            {
-              "calculate": "datum.properties.STATE_NAME",
-              "as": "state"
+          "encoding": {
+            "theta": {
+              "field": "state_code",
+              "type": "nominal",
+              "sort": [
+                "NSW",
+                "VIC",
+                "QLD",
+                "OTHER"
+              ]
             },
-            {
-              "lookup": "state",
-              "from": {
-                "data": {
-                  "values": [
-                    {
-                      "state": "New South Wales",
-                      "state_code": "NSW",
-                      "share_of_national_production_percent": 35
-                    },
-                    {
-                      "state": "Victoria",
-                      "state_code": "VIC",
-                      "share_of_national_production_percent": 28
-                    },
-                    {
-                      "state": "Queensland",
-                      "state_code": "QLD",
-                      "share_of_national_production_percent": 18
-                    }
-                  ]
-                },
-                "key": "state",
-                "fields": [
-                  "state_code",
-                  "share_of_national_production_percent"
-                ]
+
+            "radius": {
+              "field": "share",
+              "type": "quantitative",
+              "scale": {
+                "type": "sqrt",
+                "zero": true,
+                "rangeMin": 70,
+                "rangeMax": 180
               }
             },
-            {
-              "filter": "isValid(datum.share_of_national_production_percent)"
-            }
-          ],
-          "mark": {
-            "type": "geoshape",
-            "stroke": "white",
-            "strokeWidth": 1.2
-          },
-          "encoding": {
+
             "color": {
-              "field": "share_of_national_production_percent",
-              "type": "quantitative",
-              "title": "Share of National Production (%)",
+              "field": "state",
+              "type": "nominal",
+              "title": "State / Group",
               "scale": {
                 "scheme": "blues"
               }
             },
+
             "tooltip": [
               {
                 "field": "state",
@@ -111,7 +93,7 @@
                 "title": "State"
               },
               {
-                "field": "share_of_national_production_percent",
+                "field": "share",
                 "type": "quantitative",
                 "title": "Production Share (%)",
                 "format": ".0f"
@@ -121,48 +103,38 @@
         },
 
         {
-          "data": {
-            "values": [
-              {
-                "lon": 145,
-                "lat": -20,
-                "label": "QLD 18%"
-              },
-              {
-                "lon": 147,
-                "lat": -33,
-                "label": "NSW 35%"
-              },
-              {
-                "lon": 144.5,
-                "lat": -37,
-                "label": "VIC 28%"
-              },
-              {
-                "lon": 116,
-                "lat": -39,
-                "label": "Other states combined: 19%"
-              }
-            ]
-          },
           "mark": {
             "type": "text",
+            "radiusOffset": 22,
             "fontSize": 12,
-            "fontWeight": "bold",
-            "color": "black",
-            "align": "left"
+            "fontWeight": "bold"
           },
+
           "encoding": {
-            "longitude": {
-              "field": "lon",
-              "type": "quantitative"
+            "theta": {
+              "field": "state_code",
+              "type": "nominal",
+              "sort": [
+                "NSW",
+                "VIC",
+                "QLD",
+                "OTHER"
+              ]
             },
-            "latitude": {
-              "field": "lat",
-              "type": "quantitative"
+
+            "radius": {
+              "field": "share",
+              "type": "quantitative",
+              "scale": {
+                "type": "sqrt",
+                "zero": true,
+                "rangeMin": 70,
+                "rangeMax": 180
+              }
             },
+
             "text": {
-              "field": "label",
+              "field": "state_code",
               "type": "nominal"
             }
           }
@@ -172,51 +144,50 @@
 
     {
       "width": 700,
-      "height": 180,
-      "data": {
-        "values": [
-          {
-            "state": "New South Wales",
-            "state_code": "NSW",
-            "share_of_national_production_percent": 35
-          },
-          {
-            "state": "Victoria",
-            "state_code": "VIC",
-            "share_of_national_production_percent": 28
-          },
-          {
-            "state": "Queensland",
-            "state_code": "QLD",
-            "share_of_national_production_percent": 18
-          },
-          {
-            "state": "Other States",
-            "state_code": "OTHER",
-            "share_of_national_production_percent": 19
-          }
-        ]
+      "height": 200,
+
+      "title": {
+        "text": "State Comparison",
+        "fontSize": 15
       },
+
       "encoding": {
         "x": {
           "field": "state_code",
           "type": "nominal",
           "title": "State / Group",
-          "sort": ["NSW", "VIC", "QLD", "OTHER"]
+          "sort": [
+            "NSW",
+            "VIC",
+            "QLD",
+            "OTHER"
+          ],
+          "axis": {
+            "labelAngle": 0
+          }
         },
+
         "y": {
-          "field": "share_of_national_production_percent",
+          "field": "share",
           "type": "quantitative",
-          "title": "Share of National Egg Production (%)"
+          "title": "Share of National Egg Production (%)",
+          "scale": {
+            "domain": [
+              0,
+              40
+            ]
+          }
         },
+
         "color": {
-          "field": "share_of_national_production_percent",
+          "field": "share",
           "type": "quantitative",
           "legend": null,
           "scale": {
             "scheme": "blues"
           }
         },
+
         "tooltip": [
           {
             "field": "state",
@@ -224,31 +195,34 @@
             "title": "State"
           },
           {
-            "field": "share_of_national_production_percent",
+            "field": "share",
             "type": "quantitative",
             "title": "Production Share (%)",
             "format": ".0f"
           }
         ]
       },
+
       "layer": [
         {
           "mark": {
             "type": "bar",
-            "cornerRadiusTopLeft": 4,
-            "cornerRadiusTopRight": 4
+            "cornerRadiusTopLeft": 5,
+            "cornerRadiusTopRight": 5
           }
         },
+
         {
           "mark": {
             "type": "text",
-            "dy": -8,
-            "fontSize": 12,
+            "dy": -9,
+            "fontSize": 13,
             "fontWeight": "bold"
           },
+
           "encoding": {
             "text": {
-              "field": "share_of_national_production_percent",
+              "field": "share",
               "type": "quantitative",
               "format": ".0f"
             }
@@ -258,11 +232,19 @@
     }
   ],
 
+  "spacing": 30,
+
   "config": {
     "view": {
       "stroke": null
     },
+
     "axis": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+
+    "legend": {
       "labelFontSize": 11,
       "titleFontSize": 12
     }
